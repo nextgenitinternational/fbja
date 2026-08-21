@@ -1,0 +1,121 @@
+{
+  "org": {
+    "nameFull": "France Bangladesh Journalists Association",
+    "nameShort": "FBJA",
+    "tagline": "France-Bangladesh Journalists Association"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "committee": "Executive Committee",
+    "members": "Members",
+    "news": "News",
+    "statements": "Statements",
+    "events": "Events",
+    "training": "Training",
+    "gallery": "Gallery",
+    "resources": "Resources",
+    "membership": "Membership",
+    "partners": "Partners",
+    "press": "Press Room",
+    "contact": "Contact"
+  },
+  "footer": {
+    "address": "43 Rue des Panoyaux, 75020 Paris, France",
+    "email": "contact.fbja@gmail.com",
+    "siret": "SIRET: 988 278 289 00018",
+    "rna": "RNA: W751279634",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "heroTitle": "France Bangladesh Journalists Association",
+    "heroSubtitle": "Bringing together French-Bangladeshi journalists around professionalism, training and solidarity.",
+    "cta": "Become a member",
+    "eyebrow": "France · Bangladesh · Journalism",
+    "ctaSecondary": "About FBJA",
+    "statFounded": "Founded",
+    "statMembers": "Active members",
+    "statCountries": "Countries represented",
+    "newsTitle": "Recent news",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "statementEyebrow": "Statement",
+    "readStatement": "Read statement",
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Who can become a member of FBJA?",
+        "a": "Any French-Bangladeshi journalist or media professional based in France can apply for membership."
+      },
+      {
+        "q": "How do I join the association?",
+        "a": "Fill out the form on the Membership page. Our board reviews each application within two weeks."
+      },
+      {
+        "q": "Does FBJA offer training?",
+        "a": "Yes, regular workshops on fact-checking, digital security, and journalistic writing."
+      }
+    ],
+    "programsTitle": "What we do",
+    "programsCta": "Learn more",
+    "leadership": "Leadership",
+    "teamTitle": "Meet our team",
+    "readBio": "Read bio",
+    "joinEyebrow": "Membership",
+    "joinTitle": "Join FBJA",
+    "joinBody": "Become a member and take part in a network committed to French-Bangladeshi journalism.",
+    "joinCta": "Get started",
+    "emailUs": "Email us",
+    "visitUs": "Visit us",
+    "legalTitle": "Legal information"
+  },
+  "about": {
+    "intro": "FBJA brings together French-Bangladeshi journalists in France to defend professionalism, press freedom, and solidarity among peers.",
+    "missionTitle": "Our mission",
+    "missionBody": "Support Bangladeshi and French-Bangladeshi journalists in France through training, mutual aid, and professional representation.",
+    "visionTitle": "Our vision",
+    "visionBody": "A recognized, respected network — a lasting bridge between the French and Bangladeshi press.",
+    "legalTitle": "Legal information",
+    "ctaJoinTitle": "Become a member",
+    "ctaJoinBody": "Join the network of French-Bangladeshi journalists in France.",
+    "ctaContactTitle": "Contact us",
+    "ctaContactBody": "A question, a partnership, a press request? Get in touch.",
+    "teamTitle": "Our executive committee",
+    "joinTitle": "Join FBJA",
+    "joinBody": "Become a member and take part in a network committed to French-Bangladeshi journalism.",
+    "valueEthicsTitle": "Ethics",
+    "valueEthicsBody": "Rigorous, verified journalism that respects professional standards.",
+    "valueSolidarityTitle": "Solidarity",
+    "valueSolidarityBody": "Supporting fellow journalists, in France and in Bangladesh alike.",
+    "valueBridgeTitle": "Cultural bridge",
+    "valueBridgeBody": "Fostering dialogue between the media and publics of both countries."
+  },
+  "press": {
+    "intro": "Resources for journalists and media outlets covering FBJA's activities.",
+    "contactTitle": "Press contact"
+  },
+  "membership": {
+    "intro": "Join a network of French-Bangladeshi journalists committed to professionalism and solidarity.",
+    "formTitle": "Membership application",
+    "formName": "Full name",
+    "formEmail": "Email",
+    "formOutlet": "Outlet / Organization",
+    "formMessage": "Message (optional)",
+    "formSubmit": "Send application"
+  },
+  "contact": {
+    "addressLabel": "Address",
+    "emailLabel": "Email",
+    "legalLabel": "Legal information",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formMessage": "Message",
+    "formSubmit": "Send"
+  },
+  "events": {
+    "next": "Next event"
+  },
+  "placeholder": {
+    "comingSoon": "Content coming soon."
+  }
+}

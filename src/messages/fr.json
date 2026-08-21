@@ -1,0 +1,121 @@
+{
+  "org": {
+    "nameFull": "France Bangladesh Journalists Association",
+    "nameShort": "FBJA",
+    "tagline": "Association des journalistes France-Bangladesh"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "committee": "Bureau exécutif",
+    "members": "Membres",
+    "news": "Actualités",
+    "statements": "Communiqués",
+    "events": "Événements",
+    "training": "Formation",
+    "gallery": "Galerie",
+    "resources": "Ressources",
+    "membership": "Adhésion",
+    "partners": "Partenaires",
+    "press": "Espace presse",
+    "contact": "Contact"
+  },
+  "footer": {
+    "address": "43 Rue des Panoyaux, 75020 Paris",
+    "email": "contact.fbja@gmail.com",
+    "siret": "SIRET : 988 278 289 00018",
+    "rna": "RNA : W751279634",
+    "rights": "Tous droits réservés."
+  },
+  "home": {
+    "heroTitle": "France Bangladesh Journalists Association",
+    "heroSubtitle": "Réunir les journalistes franco-bangladais autour du professionnalisme, de la formation et de la solidarité.",
+    "cta": "Devenir membre",
+    "eyebrow": "France · Bangladesh · Journalisme",
+    "ctaSecondary": "À propos de FBJA",
+    "statFounded": "Fondée en",
+    "statMembers": "Membres actifs",
+    "statCountries": "Pays représentés",
+    "newsTitle": "Actualités récentes",
+    "readMore": "Lire la suite",
+    "viewAll": "Voir tout",
+    "statementEyebrow": "Communiqué",
+    "readStatement": "Lire le communiqué",
+    "faqTitle": "Questions fréquentes",
+    "faq": [
+      {
+        "q": "Qui peut devenir membre de FBJA ?",
+        "a": "Tout journaliste ou professionnel des médias franco-bangladais résidant en France peut candidater à l'adhésion."
+      },
+      {
+        "q": "Comment adhérer à l'association ?",
+        "a": "Remplissez le formulaire sur la page Adhésion. Notre bureau examine chaque demande sous deux semaines."
+      },
+      {
+        "q": "FBJA propose-t-elle des formations ?",
+        "a": "Oui, des ateliers réguliers sur le fact-checking, la sécurité numérique et l'écriture journalistique."
+      }
+    ],
+    "programsTitle": "Ce que nous faisons",
+    "programsCta": "En savoir plus",
+    "leadership": "Direction",
+    "teamTitle": "Rencontrez notre équipe",
+    "readBio": "Voir le profil",
+    "joinEyebrow": "Adhésion",
+    "joinTitle": "Rejoignez FBJA",
+    "joinBody": "Devenez membre et participez à un réseau engagé pour le journalisme franco-bangladais.",
+    "joinCta": "Adhérer",
+    "emailUs": "Écrivez-nous",
+    "visitUs": "Nous rendre visite",
+    "legalTitle": "Informations légales"
+  },
+  "about": {
+    "intro": "FBJA rassemble les journalistes franco-bangladais en France pour défendre le professionnalisme, la liberté de la presse et la solidarité entre confrères.",
+    "missionTitle": "Notre mission",
+    "missionBody": "Soutenir les journalistes bangladais et franco-bangladais en France par la formation, l'entraide et la représentation professionnelle.",
+    "visionTitle": "Notre vision",
+    "visionBody": "Un réseau reconnu, respecté, et un pont durable entre la presse française et bangladaise.",
+    "legalTitle": "Informations légales",
+    "ctaJoinTitle": "Devenir membre",
+    "ctaJoinBody": "Rejoignez le réseau des journalistes franco-bangladais en France.",
+    "ctaContactTitle": "Nous contacter",
+    "ctaContactBody": "Une question, un partenariat, une demande presse ? Écrivez-nous.",
+    "teamTitle": "Notre bureau exécutif",
+    "joinTitle": "Rejoignez FBJA",
+    "joinBody": "Devenez membre et participez à un réseau engagé pour le journalisme franco-bangladais.",
+    "valueEthicsTitle": "Déontologie",
+    "valueEthicsBody": "Un journalisme rigoureux, vérifié, respectueux des règles de la profession.",
+    "valueSolidarityTitle": "Solidarité",
+    "valueSolidarityBody": "S'entraider entre confrères, en France comme au Bangladesh.",
+    "valueBridgeTitle": "Pont culturel",
+    "valueBridgeBody": "Faire dialoguer les médias et les publics des deux pays."
+  },
+  "press": {
+    "intro": "Ressources pour les journalistes et médias souhaitant couvrir les activités de FBJA.",
+    "contactTitle": "Contact presse"
+  },
+  "membership": {
+    "intro": "Rejoignez un réseau de journalistes franco-bangladais engagés pour le professionnalisme et la solidarité.",
+    "formTitle": "Formulaire d'adhésion",
+    "formName": "Nom complet",
+    "formEmail": "Email",
+    "formOutlet": "Média / Organisation",
+    "formMessage": "Message (optionnel)",
+    "formSubmit": "Envoyer la demande"
+  },
+  "contact": {
+    "addressLabel": "Adresse",
+    "emailLabel": "Email",
+    "legalLabel": "Informations légales",
+    "formName": "Nom",
+    "formEmail": "Email",
+    "formMessage": "Message",
+    "formSubmit": "Envoyer"
+  },
+  "events": {
+    "next": "Prochain événement"
+  },
+  "placeholder": {
+    "comingSoon": "Contenu à venir."
+  }
+}
