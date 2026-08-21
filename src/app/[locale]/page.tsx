@@ -13,12 +13,6 @@ import { BookIcon, MicIcon, dotPattern } from "@/components/icons";
 const galleryTones = ["from-navy to-navy-dark", "from-red to-navy", "from-green to-navy", "from-navy to-green"];
 const trainingAccents = ["bg-navy", "bg-red", "bg-green"];
 
-const stats = [
-  { value: "2024", labelKey: "statFounded" },
-  { value: "50+", labelKey: "statMembers" },
-  { value: "2", labelKey: "statCountries" },
-];
-
 export default function Home() {
   const t = useTranslations("home");
   const tNav = useTranslations("nav");
@@ -116,20 +110,6 @@ export default function Home() {
           </FeaturedCarousel>
          </Reveal>
         </div>
-      </section>
-
-      {/* Stat bar */}
-      <section className="border-b border-black/8">
-        <Reveal>
-          <div className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-3 gap-6 text-center">
-            {stats.map((s) => (
-              <div key={s.labelKey}>
-                <p className="font-heading text-3xl sm:text-4xl font-bold text-navy">{s.value}</p>
-                <p className="mt-1 text-sm text-black/50">{t(s.labelKey)}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
       </section>
 
       {/* Team — "Meet our team" carousel */}
