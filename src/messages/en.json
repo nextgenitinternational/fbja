@@ -2,9 +2,12 @@
   "org": {
     "nameFull": "France Bangladesh Journalists Association",
     "nameShort": "FBJA",
-    "tagline": "France-Bangladesh Journalists Association"
+    "tagline": "France-Bangladesh Journalists Association",
+    "taglineLine1": "If you want to be heard, say it with us.",
+    "taglineLine2": "France-Bangladesh Journalists Association."
   },
   "nav": {
+    "search": "Search...",
     "home": "Home",
     "about": "About",
     "committee": "Executive Committee",
@@ -65,6 +68,21 @@
     "joinTitle": "Join FBJA",
     "joinBody": "Become a member and take part in a network committed to French-Bangladeshi journalism.",
     "joinCta": "Get started",
+    "forthcomingEvents": "Forthcoming events",
+    "viewAllEvents": "View a full list of all our events",
+    "live": "Live",
+    "liveCaption": "Live at FBJA",
+    "keyEvents": "Key events",
+    "joinClub": "Join the club",
+    "joinClubBody": "Become a member and get your FBJA card.",
+    "joinClubCta": "Click here for more information",
+    "newsDeskTitle": "FBJA News Desk",
+    "more": "more...",
+    "eventsBanner": "See our events",
+    "membershipBanner": "Become a member",
+    "welcomeBanner": "Welcome, journalists!",
+    "welcomeBannerCta": "Learn who we are",
+    "latestPress": "Latest press releases",
     "emailUs": "Email us",
     "visitUs": "Visit us",
     "legalTitle": "Legal information"

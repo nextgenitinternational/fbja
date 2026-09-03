@@ -12,7 +12,7 @@ export default function LocaleSwitcher() {
   const router = useRouter();
 
   return (
-    <div className="flex items-center gap-1 border-l border-black/15 pl-4">
+    <div className="flex items-center gap-1 border-l border-white/20 pl-4">
       {routing.locales.map((l) => (
         <button
           key={l}
@@ -20,8 +20,8 @@ export default function LocaleSwitcher() {
           onClick={() => router.replace(pathname, { locale: l })}
           className={
             l === locale
-              ? "font-semibold px-1.5 py-0.5 text-xs text-navy"
-              : "text-black/50 hover:text-navy px-1.5 py-0.5 text-xs"
+              ? "font-semibold px-1.5 py-0.5 text-xs text-white"
+              : "text-white/50 hover:text-white px-1.5 py-0.5 text-xs"
           }
         >
           {labels[l]}
