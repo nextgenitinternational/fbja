@@ -6,8 +6,15 @@ import { newsItems, statements, events, galleryImages, partners, pressItems } fr
 import Reveal from "@/components/Reveal";
 import HeroSlider from "@/components/HeroSlider";
 import { MicIcon } from "@/components/icons";
-
-const galleryTones = ["from-navy to-navy-dark", "from-red to-navy", "from-green to-navy", "from-navy to-green"];
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -17,67 +24,82 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero — auto-advancing image slider, no overlay text */}
+      {/* Hero — slider with a scrim + mission statement overlay */}
       <section className="relative overflow-hidden bg-navy">
-        <HeroSlider />
-
-        {/* Accent strip — CTA row */}
-        <div className="relative z-10 bg-green">
-          <div className="mx-auto max-w-6xl px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm sm:text-base font-semibold text-white text-center sm:text-left">
-              {tOrg("taglineLine1")}
-            </p>
-            <div className="flex gap-3 shrink-0">
-              <Link
-                href="/membership"
-                className="rounded-md bg-red px-6 py-2.5 text-sm font-semibold text-white text-center hover:bg-red/90 transition-colors"
-              >
-                {t("cta")}
-              </Link>
-              <Link
-                href="/about"
-                className="rounded-md border border-white/40 px-6 py-2.5 text-sm font-semibold text-white text-center hover:bg-white/10 transition-colors"
-              >
-                {t("ctaSecondary")}
-              </Link>
+        <div className="relative h-[420px] sm:h-[480px] lg:h-[560px]">
+          <HeroSlider />
+          <div className="absolute inset-0 bg-linear-to-t from-navy-dark via-navy-dark/55 to-navy-dark/10" />
+          <div className="absolute inset-0 flex items-end">
+            <div className="mx-auto w-full max-w-6xl px-4 pb-10 sm:pb-14">
+              <Badge variant="outline" className="h-6 border-white/30 px-3 text-white/85 uppercase tracking-wider">
+                {t("eyebrow")}
+              </Badge>
+              <h1 className="font-serif italic mt-4 max-w-2xl text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight text-white">
+                {t("heroTitle")}
+              </h1>
+              <p className="mt-3 max-w-xl text-sm sm:text-base text-white/75 leading-relaxed">
+                {t("heroSubtitle")}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Button size="lg" className="h-11 px-6 bg-red text-white hover:bg-red/90" render={<Link href="/membership" />}>
+                  {t("cta")}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-11 border-white/40 px-6 text-white hover:bg-white/10 hover:text-white"
+                  render={<Link href="/about" />}
+                >
+                  {t("ctaSecondary")}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Forthcoming events — date-tile row */}
-      <section className="bg-cream border-b border-black/8">
-        <div className="mx-auto max-w-6xl px-4 py-14">
+      {/* Forthcoming events — promoted directly under the hero */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
           <Reveal>
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="font-heading text-lg font-bold text-navy">{t("forthcomingEvents")}</h2>
-              <Link href="/events" className="hidden sm:inline text-sm font-semibold text-navy/70 hover:text-navy">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-red">{tNav("events")}</p>
+                <h2 className="font-heading mt-1 text-xl sm:text-2xl font-bold text-navy">
+                  {t("forthcomingEvents")}
+                </h2>
+              </div>
+              <Link
+                href="/events"
+                className="hidden sm:inline text-sm font-semibold text-navy/70 hover:text-navy"
+              >
                 {t("viewAllEvents")} →
               </Link>
             </div>
-            <div className="mt-6 grid gap-6 sm:grid-cols-3">
+
+            <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {events.slice(0, 3).map((ev) => {
                 const d = new Date(ev.startDate);
                 const day = d.toLocaleDateString(locale, { day: "2-digit" });
                 const month = d.toLocaleDateString(locale, { month: "short" }).toUpperCase();
                 const year = d.getFullYear();
                 return (
-                  <Link
-                    href="/events"
-                    key={ev.slug}
-                    className="flex items-start gap-4 group"
-                  >
-                    <div className="shrink-0 flex flex-col items-center justify-center h-20 w-20 bg-navy text-white text-center leading-none">
-                      <span className="text-2xl font-bold">{day}</span>
-                      <span className="mt-1 text-xs">{month}</span>
-                      <span className="text-xs">{year}</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-navy group-hover:underline leading-snug">
-                        {ev.title[locale]}
-                      </p>
-                      <p className="mt-1 text-sm text-black/50">{ev.location}</p>
-                    </div>
+                  <Link href="/events" key={ev.slug} className="group">
+                    <Card className="h-full gap-0 py-0 ring-border transition-shadow hover:shadow-md">
+                      <CardContent className="flex items-start gap-4 p-5">
+                        <div className="shrink-0 flex flex-col items-center justify-center h-16 w-16 rounded-lg bg-navy text-white leading-none">
+                          <span className="text-xl font-bold">{day}</span>
+                          <span className="mt-0.5 text-[10px] tracking-wide">{month}</span>
+                          <span className="text-[10px] text-white/60">{year}</span>
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-semibold text-navy leading-snug group-hover:underline">
+                            {ev.title[locale]}
+                          </p>
+                          <p className="mt-1.5 text-sm text-muted-foreground">{ev.location}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </Link>
                 );
               })}
@@ -89,40 +111,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Launch banner + News / Live / Join the Club + Partners, continuing into News Desk below */}
-      <section className="bg-cream border-b border-black/8">
+      {/* Membership CTA band */}
+      <section className="bg-navy">
+        <div className="mx-auto max-w-6xl px-4 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="text-center sm:text-left">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/50">{tOrg("nameShort")}</p>
+            <h3 className="font-heading mt-1 text-xl font-bold text-white">{t("joinClub")}</h3>
+            <p className="mt-1.5 text-sm text-white/70 max-w-md">{t("joinClubBody")}</p>
+          </div>
+          <Button size="lg" className="h-11 shrink-0 px-6 bg-red text-white hover:bg-red/90" render={<Link href="/membership" />}>
+            {t("joinClubCta")}
+          </Button>
+        </div>
+      </section>
+
+      {/* News, live coverage, and community — secondary content */}
+      <section className="bg-cream">
         <div className="mx-auto max-w-6xl px-4 py-16 grid gap-10 lg:grid-cols-3">
           {/* Column 1 — featured statement + news list */}
           <Reveal className="lg:col-span-1">
             <div>
-              <h3 className="font-heading text-lg font-bold text-navy leading-snug">
-                {statements[0].title[locale]}
-              </h3>
-              <Link
-                href={`/news/statements/${statements[0].slug}`}
-                className="mt-4 block relative h-40 rounded-xl overflow-hidden bg-linear-to-br from-navy via-navy to-green"
-              >
+              <Card className="gap-0 py-0 ring-border overflow-hidden">
                 {statements[0].image && (
-                  <Image src={statements[0].image} alt="" fill className="object-cover object-top" />
+                  <Link href={`/news/statements/${statements[0].slug}`} className="block relative h-40">
+                    <Image src={statements[0].image} alt="" fill className="object-cover object-top" />
+                    <div className="absolute inset-0 bg-linear-to-t from-navy-dark/80 to-transparent" />
+                  </Link>
                 )}
-              </Link>
+                <CardContent className="p-5">
+                  <Badge className="bg-red/10 text-red">{t("statementEyebrow")}</Badge>
+                  <Link href={`/news/statements/${statements[0].slug}`}>
+                    <h3 className="font-heading mt-2.5 text-base font-bold text-navy leading-snug hover:underline">
+                      {statements[0].title[locale]}
+                    </h3>
+                  </Link>
+                </CardContent>
+              </Card>
 
-              <h3 className="mt-10 font-heading text-lg font-bold text-navy">{tNav("news")}</h3>
-              <div className="mt-4 divide-y divide-black/10 border-t border-black/10">
+              <h3 className="font-heading mt-10 text-lg font-bold text-navy">{tNav("news")}</h3>
+              <Separator className="mt-4" />
+              <div className="divide-y divide-border">
                 {newsItems.map((item) => (
-                  <Link
-                    href="/news"
-                    key={item.slug}
-                    className="flex items-start gap-3 py-4 group"
-                  >
-                    <span className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-navy/10 text-navy">
-                      <MicIcon />
+                  <Link href="/news" key={item.slug} className="flex items-start gap-3 py-4 group">
+                    <span className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-navy/8 text-navy">
+                      <MicIcon className="h-4 w-4 text-navy" />
                     </span>
                     <div>
                       <p className="text-sm font-semibold text-navy group-hover:underline leading-snug">
                         {item.title[locale]}
                       </p>
-                      <p className="mt-1 text-xs text-black/40">
+                      <p className="mt-1 text-xs text-muted-foreground">
                         {new Date(item.date).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })}
                       </p>
                     </div>
@@ -130,16 +168,19 @@ export default function Home() {
                 ))}
               </div>
 
-              <h3 className="mt-10 font-heading text-lg font-bold text-navy">{t("newsDeskTitle")}</h3>
-              <div className="mt-4 divide-y divide-black/10 border-t border-black/10">
-                {newsItems.map((item, i) => (
+              <h3 className="font-heading mt-10 text-lg font-bold text-navy">{t("newsDeskTitle")}</h3>
+              <Separator className="mt-4" />
+              <div className="divide-y divide-border">
+                {newsItems.map((item) => (
                   <div key={item.slug} className="py-4 flex gap-4">
-                    <div className={`shrink-0 h-20 w-20 rounded-lg bg-linear-to-br ${galleryTones[i % galleryTones.length]}`} />
+                    <span className="shrink-0 flex h-14 w-14 items-center justify-center rounded-lg bg-navy/8 text-navy">
+                      <MicIcon className="h-5 w-5 text-navy" />
+                    </span>
                     <div>
                       <Link href="/news" className="font-heading font-semibold text-navy hover:underline leading-snug">
                         {item.title[locale]}
                       </Link>
-                      <p className="mt-1 text-xs text-black/40">
+                      <p className="mt-1 text-xs text-muted-foreground">
                         {new Date(item.date).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })}
                       </p>
                       <p className="mt-2 text-sm text-black/60 leading-relaxed line-clamp-3">
@@ -159,79 +200,80 @@ export default function Home() {
           <Reveal className="lg:col-span-1" delay={100}>
             <div>
               <h3 className="font-heading text-lg font-bold text-navy">{t("live")}</h3>
-              <div className="mt-4 relative h-48 rounded-xl overflow-hidden bg-navy-dark flex items-center justify-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red">
-                  <svg className="h-6 w-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-              </div>
-              <p className="mt-2 text-sm text-black/50">{t("liveCaption")}</p>
+              <Card className="mt-4 gap-0 py-0 ring-border overflow-hidden">
+                <div className="relative h-44 bg-navy-dark flex items-center justify-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red">
+                    <svg className="h-6 w-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </div>
+                <CardContent className="p-4">
+                  <p className="text-sm text-muted-foreground">{t("liveCaption")}</p>
+                </CardContent>
+              </Card>
 
-              <h3 className="mt-10 font-heading text-lg font-bold text-navy">{t("keyEvents")}</h3>
-              <div className="mt-4 space-y-4">
-                {galleryImages.slice(0, 3).map((img, i) => (
-                  <div key={img.caption[locale]} className="rounded-xl overflow-hidden">
-                    <div className={`h-28 bg-linear-to-br ${galleryTones[i % galleryTones.length]}`} />
-                    <p className="mt-2 text-sm font-semibold text-navy">{img.caption[locale]}</p>
-                  </div>
+              <h3 className="font-heading mt-10 text-lg font-bold text-navy">{t("keyEvents")}</h3>
+              <div className="mt-4 space-y-3">
+                {galleryImages.slice(0, 3).map((img) => (
+                  <Card key={img.caption[locale]} className="flex-row items-center gap-3 py-3 ring-border">
+                    <span className="ml-3 shrink-0 flex h-10 w-10 items-center justify-center rounded-md bg-navy/8 text-navy">
+                      <MicIcon className="h-4 w-4 text-navy" />
+                    </span>
+                    <p className="text-sm font-semibold text-navy pr-4">{img.caption[locale]}</p>
+                  </Card>
                 ))}
               </div>
             </div>
           </Reveal>
 
-          {/* Column 3 — Join the Club + Partners */}
+          {/* Column 3 — Partners, quick links, press */}
           <Reveal className="lg:col-span-1" delay={200}>
             <div>
-              <h3 className="font-heading text-lg font-bold text-navy">{t("joinClub")}</h3>
-              <div className="mt-4 rounded-xl bg-linear-to-br from-navy to-navy-dark p-6 text-white">
-                <p className="text-xs uppercase tracking-wide text-white/60">{tOrg("nameShort")}</p>
-                <p className="mt-3 font-heading text-lg font-bold">{t("joinClub")}</p>
-                <p className="mt-2 text-sm text-white/70">{t("joinClubBody")}</p>
-              </div>
-              <Link href="/membership" className="mt-4 inline-block text-sm font-semibold text-red hover:underline">
-                {t("joinClubCta")} →
-              </Link>
-
-              <h3 className="mt-10 font-heading text-lg font-bold text-navy">{tNav("partners")}</h3>
-              <div className="mt-4 grid grid-cols-2 gap-4">
+              <h3 className="font-heading text-lg font-bold text-navy">{tNav("partners")}</h3>
+              <div className="mt-4 grid grid-cols-2 gap-3">
                 {partners.slice(0, 4).map((p) => (
                   <div
                     key={p.name}
-                    className="flex items-center justify-center rounded-xl border border-black/10 h-20 px-3 text-center text-sm font-heading font-semibold text-navy/70"
+                    className="flex items-center justify-center rounded-lg border border-border h-20 px-3 text-center text-sm font-heading font-semibold text-navy/70"
                   >
                     {p.name}
                   </div>
                 ))}
               </div>
 
-              <div className="mt-10 space-y-4">
-                <Link href="/events" className="block rounded-xl bg-green p-6 text-white">
-                  <p className="font-heading font-bold">{t("eventsBanner")}</p>
+              <div className="mt-10 space-y-3">
+                <Link href="/events" className="flex items-center justify-between rounded-lg border border-border bg-white p-4 hover:border-navy/30">
+                  <p className="font-heading font-semibold text-navy">{t("eventsBanner")}</p>
+                  <span className="text-navy/40">→</span>
                 </Link>
-                <Link href="/membership" className="block rounded-xl bg-navy p-6 text-white">
-                  <p className="font-heading font-bold">{t("membershipBanner")}</p>
+                <Link href="/membership" className="flex items-center justify-between rounded-lg border border-border bg-white p-4 hover:border-navy/30">
+                  <p className="font-heading font-semibold text-navy">{t("membershipBanner")}</p>
+                  <span className="text-navy/40">→</span>
                 </Link>
-                <Link href="/about" className="block rounded-xl bg-red p-6 text-white">
-                  <p className="font-heading font-bold">{t("welcomeBanner")}</p>
-                  <p className="mt-1 text-sm text-white/80">{t("welcomeBannerCta")}</p>
+                <Link href="/about" className="flex items-center justify-between rounded-lg bg-navy p-4">
+                  <div>
+                    <p className="font-heading font-semibold text-white">{t("welcomeBanner")}</p>
+                    <p className="mt-0.5 text-xs text-white/70">{t("welcomeBannerCta")}</p>
+                  </div>
+                  <span className="text-white/50">→</span>
                 </Link>
               </div>
 
-              <h3 className="mt-10 font-heading text-lg font-bold text-navy">{t("latestPress")}</h3>
-              <div className="mt-4 space-y-4">
+              <h3 className="font-heading mt-10 text-lg font-bold text-navy">{t("latestPress")}</h3>
+              <div className="mt-4 space-y-3">
                 {pressItems.map((p) => (
                   <Link
                     href="/press"
                     key={p.title[locale]}
-                    className="flex items-center gap-3 rounded-lg ring-1 ring-black/5 p-3 hover:bg-navy/5"
+                    className="flex items-center gap-3 rounded-lg border border-border p-3 hover:bg-white"
                   >
                     <span className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-navy">
                       <MicIcon />
                     </span>
                     <div>
                       <p className="text-sm font-semibold text-navy leading-snug">{p.title[locale]}</p>
-                      <p className="text-xs text-black/40">{new Date(p.date).toLocaleDateString(locale)}</p>
+                      <p className="text-xs text-muted-foreground">{new Date(p.date).toLocaleDateString(locale)}</p>
                     </div>
                   </Link>
                 ))}
@@ -240,7 +282,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
     </div>
   );
 }

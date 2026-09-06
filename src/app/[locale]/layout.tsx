@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Inter, Noto_Sans_Bengali } from "next/font/google";
+import { Sora, Inter, Source_Serif_4, Noto_Sans_Bengali } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -17,6 +17,13 @@ const heading = Sora({
 const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
+});
+
+const serif = Source_Serif_4({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const notoBengali = Noto_Sans_Bengali({
@@ -49,7 +56,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir="ltr"
-      className={`${heading.variable} ${body.variable} ${notoBengali.variable} h-full antialiased`}
+      className={`${heading.variable} ${body.variable} ${serif.variable} ${notoBengali.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
