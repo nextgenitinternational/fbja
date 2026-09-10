@@ -108,6 +108,24 @@ export function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
+export function PressReleaseIcon({ className = "h-8 w-8" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className}>
+      <rect x="7" y="10" width="30" height="24" rx="1.5" fill="currentColor" fillOpacity="0.12" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="11" y="6" width="30" height="24" rx="1.5" fill="white" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M15 13h14M15 17h22M15 21h22M15 25h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className}>
+      <path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export const dotPattern = {
   backgroundImage: "radial-gradient(currentColor 1.4px, transparent 1.4px)",
   backgroundSize: "9px 9px",

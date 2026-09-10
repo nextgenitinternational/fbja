@@ -61,6 +61,32 @@
     ],
     "programsTitle": "What we do",
     "programsCta": "Learn more",
+    "programs": [
+      {
+        "title": "Training & Skills",
+        "body": "Workshops on fact-checking, digital security and journalistic writing for members."
+      },
+      {
+        "title": "Communications & PR",
+        "body": "Public statements, press relations and visibility for French-Bangladeshi journalism."
+      },
+      {
+        "title": "Planning & Events",
+        "body": "General assemblies, conferences and networking evenings across Paris."
+      },
+      {
+        "title": "Solidarity & Mutual Aid",
+        "body": "Supporting members and colleagues facing hardship or exile."
+      },
+      {
+        "title": "Press Freedom Advocacy",
+        "body": "Professional representation and advocacy for journalists in France and Bangladesh."
+      }
+    ],
+    "statCommittee": "Executive committee members",
+    "statPartners": "Media & institutional partners",
+    "statTrainings": "Trainings delivered",
+    "statementsTitle": "In our own words",
     "leadership": "Leadership",
     "teamTitle": "Meet our team",
     "readBio": "Read bio",

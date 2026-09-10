@@ -15,6 +15,7 @@ export const newsItems = [
       bn: "বছরের কার্যক্রম পর্যালোচনা ও নতুন কার্যনির্বাহী কমিটি নির্বাচনের জন্য সদস্যরা একত্রিত হন।",
     } as LocaleString,
     date: "2026-06-14",
+    image: "/images/news-assembly.jpg",
   },
   {
     slug: "partenariat-rfi",
@@ -29,6 +30,7 @@ export const newsItems = [
       bn: "ব্যবহারিক কর্মশালা আয়োজনে আরএফআই-এর সঙ্গে সহযোগিতা চুক্তি স্বাক্ষর করেছে এফবিজেএ।",
     } as LocaleString,
     date: "2026-05-02",
+    image: "/images/news-partnership.jpg",
   },
   {
     slug: "soiree-solidarite",
@@ -43,6 +45,7 @@ export const newsItems = [
       bn: "নির্বাসিত সহকর্মী সাংবাদিকদের পাশে দাঁড়াতে প্যারিসে আয়োজিত এক সন্ধ্যা।",
     } as LocaleString,
     date: "2026-03-21",
+    image: "/images/news-solidarity.jpg",
   },
 ];
 
@@ -126,6 +129,26 @@ export const events = [
     } as LocaleString,
     location: "Paris",
     startDate: "2027-03-15",
+  },
+  {
+    slug: "atelier-securite-numerique",
+    title: {
+      fr: "Atelier de sécurité numérique pour journalistes",
+      en: "Digital security clinic for journalists",
+      bn: "সাংবাদিকদের জন্য ডিজিটাল নিরাপত্তা কর্মশালা",
+    } as LocaleString,
+    location: "Maison des journalistes, Paris",
+    startDate: "2026-11-18",
+  },
+  {
+    slug: "soiree-networking-membres",
+    title: {
+      fr: "Soirée de réseautage entre membres",
+      en: "Members networking evening",
+      bn: "সদস্যদের নেটওয়ার্কিং সন্ধ্যা",
+    } as LocaleString,
+    location: "Paris",
+    startDate: "2026-12-08",
   },
 ];
 

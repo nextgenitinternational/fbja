@@ -61,6 +61,32 @@
     ],
     "programsTitle": "Ce que nous faisons",
     "programsCta": "En savoir plus",
+    "programs": [
+      {
+        "title": "Formation & Compétences",
+        "body": "Ateliers de vérification des faits, de sécurité numérique et d'écriture journalistique pour nos membres."
+      },
+      {
+        "title": "Communication & Relations publiques",
+        "body": "Communiqués publics, relations presse et visibilité pour le journalisme franco-bangladais."
+      },
+      {
+        "title": "Planification & Événements",
+        "body": "Assemblées générales, conférences et soirées de réseautage à Paris."
+      },
+      {
+        "title": "Solidarité & Entraide",
+        "body": "Soutien aux membres et confrères confrontés à des difficultés ou à l'exil."
+      },
+      {
+        "title": "Plaidoyer pour la liberté de la presse",
+        "body": "Représentation professionnelle et plaidoyer pour les journalistes en France et au Bangladesh."
+      }
+    ],
+    "statCommittee": "Membres du bureau exécutif",
+    "statPartners": "Partenaires médias et institutionnels",
+    "statTrainings": "Formations dispensées",
+    "statementsTitle": "Dans nos propres mots",
     "leadership": "Direction",
     "teamTitle": "Rencontrez notre équipe",
     "readBio": "Voir le profil",
