@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { statements, type Locale } from "@/lib/sampleData";
-import { MicIcon, dotPattern } from "@/components/icons";
+import { MicIcon } from "@/components/icons";
 import ZoomableImage from "@/components/ZoomableImage";
 
 export default async function StatementDetailPage({
@@ -20,31 +20,29 @@ export default async function StatementDetailPage({
 
   return (
     <div>
-      {/* Hero band */}
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="pointer-events-none absolute right-6 top-6 h-20 w-20 text-white/10" style={dotPattern} />
-        <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-red/20" />
-        <div className="relative mx-auto max-w-3xl px-4 py-16">
-          <Link href="/news/statements" className="text-sm font-semibold text-white/70 hover:text-white">
+      {/* Title band */}
+      <section className="bg-cream border-b border-black/8">
+        <div className="mx-auto max-w-3xl px-4 py-8">
+          <Link href="/news/statements" className="text-sm text-black/50 hover:underline">
             ← {tNav("statements")}
           </Link>
 
-          <div className="mt-6 flex items-center gap-3">
+          <div className="mt-5 flex items-center gap-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red">
               <MicIcon />
             </span>
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/70">
+            <p className="text-xs font-semibold uppercase tracking-wide text-black/50">
               {t("statementEyebrow")}
             </p>
           </div>
-          <p className="mt-4 text-sm text-white/60">
+          <p className="mt-3 text-sm text-black/50">
             {new Date(statement.date).toLocaleDateString(loc, {
               day: "numeric",
               month: "long",
               year: "numeric",
             })}
           </p>
-          <h1 className="mt-3 font-heading text-2xl sm:text-3xl font-bold leading-snug max-w-2xl">
+          <h1 className="mt-2 font-heading text-2xl sm:text-3xl font-bold leading-snug text-navy max-w-2xl">
             {statement.title[loc]}
           </h1>
         </div>

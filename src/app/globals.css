@@ -6,17 +6,17 @@
 
 :root {
 
-  /* FBJA brand: France navy + red, Bangladesh green */
+  /* FBJA brand: France navy + burgundy, Bangladesh green, warm cream ground */
   --color-navy: #0b2545;
   --color-navy-dark: #071a33;
-  --color-red: #c8102e;
+  --color-red: #7a1f2a;
   --color-green: #006a4e;
-  --color-cream: #eef1f6;
-  --background: oklch(1 0 0);
+  --color-cream: #f1ebe1;
+  --background: #f1ebe1;
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+  --card: #f1ebe1;
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
+  --popover: #f1ebe1;
   --popover-foreground: oklch(0.145 0 0);
   --primary: var(--color-navy);
   --primary-foreground: oklch(0.985 0 0);
@@ -99,10 +99,29 @@
 
 body {
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
 }
 
 h1, h2, h3, h4, .font-heading {
   font-family: var(--font-heading), Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+@keyframes modal-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .font-serif {
@@ -117,8 +136,8 @@ h1, h2, h3, h4, .font-heading {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-visible {
@@ -131,6 +150,102 @@ h1, h2, h3, h4, .font-heading {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Intro sequence — FBJA expands into the full name */
+.intro-root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-cream);
+  animation: intro-out 0.7s ease 3.05s forwards;
+}
+
+.intro-logo {
+  display: block;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: intro-logo-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.intro-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: var(--color-navy);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  font-size: clamp(2.25rem, 9vw, 5rem);
+}
+
+.intro-letter {
+  opacity: 0;
+  animation: intro-letter-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.intro-rest {
+  opacity: 0;
+  animation: intro-rest-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.intro-rule {
+  display: block;
+  height: 3px;
+  width: 0;
+  margin-top: 1.25rem;
+  background: var(--color-red);
+  animation: intro-rule-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 2.25s forwards;
+}
+
+@keyframes intro-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes intro-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes intro-rest-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes intro-rule-in {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+    visibility: hidden;
   }
 }
 

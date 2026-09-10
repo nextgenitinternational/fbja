@@ -1,29 +1,28 @@
 import type { Metadata } from "next";
-import { Sora, Inter, Source_Serif_4, Noto_Sans_Bengali } from "next/font/google";
+import { Fraunces, Zalando_Sans, Martian_Mono, Noto_Sans_Bengali } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import IntroOverlay from "@/components/IntroOverlay";
+import ScrollToTop from "@/components/ScrollToTop";
 import "../globals.css";
 
-const heading = Sora({
+const heading = Fraunces({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
 });
 
-const body = Inter({
+const body = Zalando_Sans({
   variable: "--font-body",
   subsets: ["latin"],
 });
 
-const serif = Source_Serif_4({
+const serif = Martian_Mono({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 const notoBengali = Noto_Sans_Bengali({
@@ -60,9 +59,11 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
+          <IntroOverlay />
           <Nav />
           <main className="flex-1">{children}</main>
           <Footer />
+          <ScrollToTop />
         </NextIntlClientProvider>
       </body>
     </html>

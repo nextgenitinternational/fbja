@@ -1,6 +1,10 @@
 "use client";
 
-import type { CommitteeMember } from "@/lib/committee";
+import Image from "next/image";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLocale } from "next-intl";
+import type { CommitteeMember, CommitteeBio } from "@/lib/committee";
+import type { Locale } from "@/lib/sampleData";
 import { FacebookIcon, LinkedinIcon, XIcon } from "@/components/icons";
 
 const avatarTones = [
@@ -21,64 +25,129 @@ function initials(name: string) {
     .toUpperCase();
 }
 
+function bioFor(bio: CommitteeBio | undefined, locale: Locale) {
+  if (!bio) return undefined;
+  return bio[locale] ?? bio.en ?? bio.fr ?? bio.bn;
+}
+
 export default function MemberModal({
   members,
   openIndex,
   setOpenIndex,
+  originRect,
 }: {
   members: CommitteeMember[];
   openIndex: number | null;
   setOpenIndex: (i: number | null) => void;
+  originRect?: DOMRect | null;
 }) {
-  if (openIndex === null) return null;
-  const member = members[openIndex];
+  const locale = useLocale() as Locale;
+  const [renderIndex, setRenderIndex] = useState(openIndex);
+  const [closing, setClosing] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const prevOpenIndexRef = useRef<number | null>(null);
 
-  function go(dir: 1 | -1) {
-    setOpenIndex((openIndex! + dir + members.length) % members.length);
+  useEffect(() => {
+    if (openIndex !== null) {
+      setRenderIndex(openIndex);
+      setClosing(false);
+    } else if (renderIndex !== null) {
+      setClosing(true);
+      const id = setTimeout(() => setRenderIndex(null), 260);
+      return () => clearTimeout(id);
+    }
+  }, [openIndex, renderIndex]);
+
+  // FLIP — grow the panel from the clicked card's on-screen rect, and shrink back into it on close.
+  useLayoutEffect(() => {
+    const prevOpen = prevOpenIndexRef.current;
+    prevOpenIndexRef.current = openIndex;
+
+    const panel = panelRef.current;
+    if (!panel || !originRect) return;
+
+    const originCenterX = originRect.left + originRect.width / 2;
+    const originCenterY = originRect.top + originRect.height / 2;
+
+    // Opening — panel just mounted at its natural (final) position/size.
+    if (prevOpen === null && openIndex !== null) {
+      const finalRect = panel.getBoundingClientRect();
+      const scaleX = originRect.width / finalRect.width;
+      const scaleY = originRect.height / finalRect.height;
+      const dx = originCenterX - (finalRect.left + finalRect.width / 2);
+      const dy = originCenterY - (finalRect.top + finalRect.height / 2);
+
+      panel.style.transition = "none";
+      panel.style.transformOrigin = "center center";
+      panel.style.transform = `translate(${dx}px, ${dy}px) scale(${scaleX}, ${scaleY})`;
+      panel.style.opacity = "0.5";
+      // Force reflow so the transition below actually animates from this state.
+      void panel.getBoundingClientRect();
+
+      requestAnimationFrame(() => {
+        panel.style.transition = "transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease";
+        panel.style.transform = "none";
+        panel.style.opacity = "1";
+      });
+    }
+
+    // Closing — shrink from wherever the panel currently is back to the origin card.
+    if (prevOpen !== null && openIndex === null) {
+      const currentRect = panel.getBoundingClientRect();
+      const scaleX = originRect.width / currentRect.width;
+      const scaleY = originRect.height / currentRect.height;
+      const dx = originCenterX - (currentRect.left + currentRect.width / 2);
+      const dy = originCenterY - (currentRect.top + currentRect.height / 2);
+
+      panel.style.transformOrigin = "center center";
+      panel.style.transition = "transform 0.26s cubic-bezier(0.4, 0, 1, 1), opacity 0.22s ease";
+      panel.style.transform = `translate(${dx}px, ${dy}px) scale(${scaleX}, ${scaleY})`;
+      panel.style.opacity = "0";
+    }
+  }, [openIndex, originRect]);
+
+  if (renderIndex === null) return null;
+  const member = members[renderIndex];
+  const bioText = bioFor(member.bio, locale);
+
+  function close() {
+    setOpenIndex(null);
   }
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-      onClick={() => setOpenIndex(null)}
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 transition-opacity duration-200 ${
+        closing ? "opacity-0" : "opacity-100"
+      }`}
+      onClick={close}
     >
-      <button
-        type="button"
-        onClick={() => go(-1)}
-        aria-label="Previous"
-        onClickCapture={(e) => e.stopPropagation()}
-        className="hidden sm:flex absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 text-white hover:bg-white/20 transition-colors"
-      >
-        ←
-      </button>
-      <button
-        type="button"
-        onClick={() => go(1)}
-        aria-label="Next"
-        onClickCapture={(e) => e.stopPropagation()}
-        className="hidden sm:flex absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 text-white hover:bg-white/20 transition-colors"
-      >
-        →
-      </button>
-
       <div
-        className="relative w-full max-w-3xl rounded-2xl bg-white p-6 sm:p-10 grid gap-8 sm:grid-cols-2 items-center"
+        ref={panelRef}
+        className="relative grid w-full max-w-4xl gap-8 rounded-2xl bg-white p-6 sm:grid-cols-[220px_1fr] sm:p-10 max-h-[85vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
-          onClick={() => setOpenIndex(null)}
+          onClick={close}
           aria-label="Close"
           className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white hover:bg-navy-dark transition-colors"
         >
           ×
         </button>
 
-        <span
-          className={`mx-auto flex h-40 w-40 items-center justify-center rounded-full bg-linear-to-br ${avatarTones[openIndex % avatarTones.length]} text-white font-heading font-bold text-4xl`}
-        >
-          {initials(member.name)}
-        </span>
+        <div className="mx-auto w-40 sm:mx-0 sm:w-full">
+          {member.photo ? (
+            <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl bg-navy/8">
+              <Image src={member.photo} alt={member.name} fill sizes="(min-width: 640px) 220px, 160px" className="object-cover" />
+            </div>
+          ) : (
+            <span
+              className={`flex aspect-3/4 w-full items-center justify-center rounded-2xl bg-linear-to-br ${avatarTones[renderIndex % avatarTones.length]} text-white font-heading font-bold text-4xl`}
+            >
+              {initials(member.name)}
+            </span>
+          )}
+        </div>
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-green">{member.role}</p>
@@ -91,6 +160,16 @@ export default function MemberModal({
               {e}
             </p>
           ))}
+
+          {bioText && (
+            <div className="mt-5 space-y-4 border-t border-black/8 pt-5">
+              {bioText.split("\n\n").map((p, i) => (
+                <p key={i} className="text-sm leading-relaxed text-black/70">
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
 
           {(() => {
             const socialItems = [
@@ -126,17 +205,6 @@ export default function MemberModal({
             );
           })()}
         </div>
-      </div>
-
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-        {members.map((_, i) => (
-          <span
-            key={i}
-            className={`h-2.5 rounded-full transition-all ${
-              i === openIndex ? "w-6 bg-white" : "w-2.5 bg-white/30"
-            }`}
-          />
-        ))}
       </div>
     </div>
   );

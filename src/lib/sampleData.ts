@@ -16,6 +16,11 @@ export const newsItems = [
     } as LocaleString,
     date: "2026-06-14",
     image: "/images/news-assembly.jpg",
+    body: {
+      fr: "Les membres de la FBJA se sont réunis à Paris pour l'Assemblée générale annuelle. Au programme : bilan des actions menées durant l'année écoulée, présentation des comptes, et élection du nouveau bureau exécutif.\n\nLa rencontre a aussi été l'occasion d'échanger sur les priorités à venir : renforcement de la formation des jeunes journalistes, soutien aux confrères en difficulté, et développement des partenariats avec les médias francophones.",
+      en: "FBJA members gathered in Paris for the annual General Assembly. On the agenda: a review of the past year's activities, presentation of accounts, and the election of the new executive committee.\n\nThe meeting was also an opportunity to discuss upcoming priorities: strengthening training for young journalists, supporting colleagues in difficulty, and expanding partnerships with francophone media.",
+      bn: "প্যারিসে এফবিজেএ-র বার্ষিক সাধারণ সভায় সদস্যরা একত্রিত হন। আলোচ্যসূচিতে ছিল: গত বছরের কার্যক্রম পর্যালোচনা, হিসাব উপস্থাপন এবং নতুন কার্যনির্বাহী কমিটি নির্বাচন।\n\nএই সভায় আগামী দিনের অগ্রাধিকার নিয়েও আলোচনা হয়: তরুণ সাংবাদিকদের প্রশিক্ষণ জোরদার করা, বিপদগ্রস্ত সহকর্মীদের পাশে দাঁড়ানো এবং ফরাসিভাষী গণমাধ্যমের সঙ্গে অংশীদারিত্ব বৃদ্ধি।",
+    } as LocaleString,
   },
   {
     slug: "partenariat-rfi",
@@ -31,6 +36,11 @@ export const newsItems = [
     } as LocaleString,
     date: "2026-05-02",
     image: "/images/news-partnership.jpg",
+    body: {
+      fr: "La FBJA a signé un accord de coopération avec RFI destiné à proposer des ateliers pratiques aux jeunes journalistes membres de l'association. Ce partenariat vise à renforcer les compétences en écriture journalistique, vérification des faits et production radio.\n\nLes premières sessions de formation débuteront dans les prochains mois à Paris, avec l'ambition d'être étendues à d'autres villes de France.",
+      en: "FBJA has signed a cooperation agreement with RFI to offer hands-on workshops to young journalists among its members. The partnership aims to strengthen skills in journalistic writing, fact-checking and radio production.\n\nThe first training sessions will begin in Paris in the coming months, with the ambition of expanding to other cities in France.",
+      bn: "এফবিজেএ তার তরুণ সাংবাদিক সদস্যদের জন্য ব্যবহারিক কর্মশালা আয়োজনে আরএফআই-এর সঙ্গে সহযোগিতা চুক্তি স্বাক্ষর করেছে। এই অংশীদারিত্বের লক্ষ্য সাংবাদিকতা লেখনী, তথ্য যাচাই ও রেডিও প্রোডাকশনে দক্ষতা বৃদ্ধি করা।\n\nপ্রথম প্রশিক্ষণ সেশনগুলো আগামী মাসগুলোতে প্যারিসে শুরু হবে, এবং ফ্রান্সের অন্যান্য শহরে সম্প্রসারণের পরিকল্পনা রয়েছে।",
+    } as LocaleString,
   },
   {
     slug: "soiree-solidarite",
@@ -46,6 +56,11 @@ export const newsItems = [
     } as LocaleString,
     date: "2026-03-21",
     image: "/images/news-solidarity.jpg",
+    body: {
+      fr: "La FBJA a organisé à Paris une soirée de solidarité pour soutenir les journalistes contraints à l'exil. L'événement a réuni membres, partenaires associatifs et journalistes exilés autour de témoignages et d'échanges.\n\nLes fonds récoltés lors de la soirée serviront à financer un dispositif d'accompagnement (aide juridique, hébergement d'urgence, mise en réseau professionnelle) pour les confrères contraints de quitter leur pays.",
+      en: "FBJA held a solidarity evening in Paris to support journalists forced into exile. The event brought together members, partner organisations and exiled journalists for testimonies and discussion.\n\nFunds raised during the evening will finance a support scheme (legal aid, emergency housing, professional networking) for colleagues forced to leave their country.",
+      bn: "নির্বাসিত সাংবাদিকদের পাশে দাঁড়াতে এফবিজেএ প্যারিসে একটি সংহতি সন্ধ্যার আয়োজন করে। অনুষ্ঠানে সদস্য, সহযোগী সংগঠন ও নির্বাসিত সাংবাদিকরা একত্রিত হয়ে অভিজ্ঞতা বিনিময় করেন।\n\nসন্ধ্যায় সংগৃহীত তহবিল দিয়ে দেশত্যাগে বাধ্য হওয়া সহকর্মীদের জন্য একটি সহায়তা কার্যক্রম (আইনি সহায়তা, জরুরি আবাসন, পেশাগত নেটওয়ার্কিং) পরিচালিত হবে।",
+    } as LocaleString,
   },
 ];
 
@@ -149,6 +164,16 @@ export const events = [
     } as LocaleString,
     location: "Paris",
     startDate: "2026-12-08",
+  },
+  {
+    slug: "assemblee-generale-hiver",
+    title: {
+      fr: "Assemblée générale d'hiver",
+      en: "Winter General Assembly",
+      bn: "শীতকালীন সাধারণ সভা",
+    } as LocaleString,
+    location: "Paris",
+    startDate: "2027-01-24",
   },
 ];
 

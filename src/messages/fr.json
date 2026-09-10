@@ -10,6 +10,7 @@
     "search": "Rechercher...",
     "home": "Accueil",
     "about": "À propos",
+    "whatWeDo": "Ce que nous faisons",
     "committee": "Bureau exécutif",
     "members": "Membres",
     "news": "Actualités",
@@ -32,6 +33,8 @@
   },
   "home": {
     "heroTitle": "France Bangladesh Journalists Association",
+    "heroLine1": "France Bangladesh",
+    "heroLine2": "Association des journalistes",
     "heroSubtitle": "Réunir les journalistes franco-bangladais autour du professionnalisme, de la formation et de la solidarité.",
     "cta": "Devenir membre",
     "eyebrow": "France · Bangladesh · Journalisme",
@@ -132,7 +135,10 @@
     "valueSolidarityTitle": "Solidarité",
     "valueSolidarityBody": "S'entraider entre confrères, en France comme au Bangladesh.",
     "valueBridgeTitle": "Pont culturel",
-    "valueBridgeBody": "Faire dialoguer les médias et les publics des deux pays."
+    "valueBridgeBody": "Faire dialoguer les médias et les publics des deux pays.",
+    "whatWeDoP1": "La FBJA a pour objectif d'offrir un lieu de rencontre professionnel et social aux journalistes franco-bangladais en France. C'est une plateforme pour les points presse, les débats publics et les échanges avec les médias, les associations et les institutions publiques. Les membres bénéficient d'entraide, de mentorat et d'un réseau de contacts partagé entre la presse française et bangladaise.",
+    "whatWeDoP2": "La FBJA favorise les échanges avec les médias bangladais et français, les ambassades et les institutions culturelles. L'association organise des ateliers de formation, des conférences de presse et des événements de réseautage ouverts aux journalistes professionnels, aux pigistes ainsi qu'aux étudiants qui débutent dans le métier.",
+    "whatWeDoP3": "Les membres de la FBJA peuvent participer aux événements de l'association : assemblées générales, soirées de solidarité, ateliers de formation et rencontres de réseautage. Pour les journalistes nouvellement arrivés en France, la FBJA propose également un accompagnement et des mises en relation au sein du paysage médiatique français."
   },
   "press": {
     "intro": "Ressources pour les journalistes et médias souhaitant couvrir les activités de FBJA.",

@@ -12,13 +12,11 @@ export default function StatementsPage() {
 
   return (
     <div>
-      {/* Hero band */}
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="pointer-events-none absolute right-6 top-6 h-20 w-20 text-white/10" style={dotPattern} />
-        <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-red/20" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16">
-          <p className="text-sm font-semibold uppercase tracking-wide text-cream/80">FBJA</p>
-          <h1 className="mt-3 font-heading text-3xl sm:text-4xl font-bold tracking-tight">
+      {/* Title band */}
+      <section className="bg-cream border-b border-black/8">
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          <p className="text-sm text-black/50">FBJA</p>
+          <h1 className="mt-2 font-heading text-3xl sm:text-4xl font-bold tracking-tight text-navy">
             {t("statements")}
           </h1>
         </div>
@@ -34,7 +32,7 @@ export default function StatementsPage() {
             >
               <div className="relative h-40 bg-linear-to-br from-navy to-navy-dark">
                 {s.image && (
-                  <Image src={s.image} alt="" fill className="object-cover object-top" />
+                  <Image src={s.image} alt="" fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover object-top" />
                 )}
                 <div className="pointer-events-none absolute right-3 top-3 h-10 w-10 text-white/15" style={dotPattern} />
               </div>

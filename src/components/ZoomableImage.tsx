@@ -20,7 +20,7 @@ export default function ZoomableImage({
         className={`relative block w-full cursor-zoom-in ${className ?? ""}`}
         aria-label="Zoom image"
       >
-        <Image src={src} alt="" fill className="object-contain" priority />
+        <Image src={src} alt="" fill sizes="(min-width: 640px) 50vw, 100vw" className="object-contain" priority />
       </button>
 
       {open && (
@@ -37,7 +37,7 @@ export default function ZoomableImage({
             ×
           </button>
           <div className="relative h-full w-full max-w-3xl">
-            <Image src={src} alt="" fill className="object-contain" />
+            <Image src={src} alt="" fill sizes="100vw" className="object-contain" />
           </div>
         </div>
       )}

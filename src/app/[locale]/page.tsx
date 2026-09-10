@@ -4,13 +4,12 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/lib/sampleData";
 import { newsItems, statements, events, partners, galleryImages, pressItems } from "@/lib/sampleData";
 import Reveal from "@/components/Reveal";
-import HeroSlider from "@/components/HeroSlider";
-import { ArrowRightIcon, BookIcon, MicIcon, PinIcon, RoleIcon, ShieldIcon } from "@/components/icons";
+import HomeHero from "@/components/HomeHero";
+import { ArrowRightIcon, PressReleaseIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-const programIcons = [BookIcon, MicIcon, PinIcon, RoleIcon, ShieldIcon];
 const partnerLogos: Record<string, string> = {
   RFI: "/images/partner-rfi.svg",
   "France 24": "/images/partner-france24.svg",
@@ -22,8 +21,9 @@ const eventPhotos = [
   "/images/news-workshop.jpg",
   "/images/news-members.jpg",
   "/images/hero-press-3.jpg",
+  "/images/news-assembly.jpg",
 ];
-const eventTags = ["Workshop", "Conference", "Networking", "Workshop", "Networking"];
+const eventTags = ["Workshop", "Conference", "Networking", "Workshop", "Networking", "Assembly"];
 const keyEventPhotos = [
   "/images/news-assembly.jpg",
   "/images/news-workshop.jpg",
@@ -38,45 +38,15 @@ export default function Home() {
   const tNav = useTranslations("nav");
   const locale = useLocale() as Locale;
 
-  const programs = t.raw("programs") as { title: string; body: string }[];
-
   const newsFeed = [
-    ...newsItems.map((n) => ({ ...n, href: "/news" as const })),
+    ...newsItems.map((n) => ({ ...n, href: `/news/${n.slug}` as const })),
     ...statements.slice(0, 2).map((s) => ({ ...s, href: `/news/statements/${s.slug}` as const })),
   ];
 
   return (
     <div>
-      {/* Hero — full-bleed photo slider */}
-      <section className="hero-photo-in relative">
-        <HeroSlider full />
-      </section>
-
-      {/* Programs & committees */}
-      <section>
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-wider text-red">{tNav("committee")}</p>
-            <h2 className="font-heading mt-1.5 text-2xl font-extrabold uppercase text-navy sm:text-3xl">
-              {t("programsTitle")}
-            </h2>
-            <div className="mt-10 grid gap-px overflow-hidden border-t-2 border-navy bg-border sm:grid-cols-2 lg:grid-cols-5">
-              {programs.map((p, i) => {
-                const Icon = programIcons[i % programIcons.length];
-                return (
-                  <div key={p.title} className="bg-white p-6">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red/10">
-                      <Icon className="h-5 w-5 text-red" />
-                    </span>
-                    <h3 className="font-heading mt-4 text-sm font-bold uppercase text-navy">{p.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-black/60">{p.body}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* Hero */}
+      <HomeHero />
 
       {/* Forthcoming events */}
       <section className="border-y border-border bg-cream">
@@ -98,10 +68,10 @@ export default function Home() {
             <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
               {/* Featured event — large card */}
               {events[0] && (
-                <Link href="/events" className="group relative block h-72 overflow-hidden sm:col-span-2 sm:row-span-2 sm:h-full">
-                  <Image src={eventPhotos[0]} alt="" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                <Link href="/events" className="group relative block h-72 overflow-hidden rounded-2xl shadow-[0_8px_24px_rgba(11,37,69,0.12)] ring-1 ring-black/5 sm:col-span-2 sm:row-span-2 sm:h-full">
+                  <Image src={eventPhotos[0]} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition-transform duration-300 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-linear-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
-                  <span className="absolute left-0 top-0 bg-red px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+                  <span className="absolute left-4 top-4 rounded-full bg-red px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                     {eventTags[0]}
                   </span>
                   <div className="absolute bottom-5 left-5 right-5">
@@ -115,11 +85,11 @@ export default function Home() {
                 </Link>
               )}
 
-              {events.slice(1, 5).map((ev, i) => (
-                <Link href="/events" key={ev.slug} className="group relative block h-44 overflow-hidden">
-                  <Image src={eventPhotos[i + 1]} alt="" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+              {events.slice(1, 6).map((ev, i) => (
+                <Link href="/events" key={ev.slug} className="group relative block h-44 overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(11,37,69,0.1)] ring-1 ring-black/5">
+                  <Image src={eventPhotos[i + 1]} alt="" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition-transform duration-300 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-linear-to-t from-navy-dark/90 via-navy-dark/25 to-transparent" />
-                  <span className="absolute left-0 top-0 bg-red px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+                  <span className="absolute left-3 top-3 rounded-full bg-red px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
                     {eventTags[i + 1]}
                   </span>
                   <div className="absolute bottom-3 left-3 right-3">
@@ -148,14 +118,18 @@ export default function Home() {
             {/* Column 1 — featured statement + news list */}
             <Reveal className="lg:col-span-1">
               <div>
-                <Link href={`/news/statements/${statements[0].slug}`} className="group block bg-navy p-7">
-                  <Badge className="bg-red text-white">{t("statementEyebrow")}</Badge>
-                  <h3 className="font-heading mt-4 text-xl font-bold leading-snug text-white group-hover:underline">
-                    {statements[0].title[locale]}
-                  </h3>
-                  <p className="mt-3 text-sm text-white/60">
-                    {new Date(statements[0].date).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })}
-                  </p>
+                <Link href={`/news/statements/${statements[0].slug}`} className="group relative block h-64 overflow-hidden rounded-2xl shadow-[0_8px_24px_rgba(11,37,69,0.12)] ring-1 ring-black/5 p-7">
+                  <Image src="/images/news-pressconf.jpg" alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-linear-to-t from-navy-dark via-navy-dark/85 to-navy-dark/30" />
+                  <div className="relative flex h-full flex-col justify-end">
+                    <Badge className="absolute top-0 bg-red text-white">{t("statementEyebrow")}</Badge>
+                    <h3 className="font-heading text-xl font-bold leading-snug text-white group-hover:underline">
+                      {statements[0].title[locale]}
+                    </h3>
+                    <p className="mt-3 text-sm text-white/60">
+                      {new Date(statements[0].date).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })}
+                    </p>
+                  </div>
                 </Link>
 
                 <h3 className="font-heading mt-12 text-xl font-extrabold uppercase text-navy">{tNav("news")}</h3>
@@ -164,7 +138,7 @@ export default function Home() {
                   {newsFeed.map((item) => (
                     <Link href={item.href} key={item.slug} className="group flex items-start gap-5 py-6">
                       <span className="relative h-24 w-24 shrink-0 overflow-hidden bg-navy/8">
-                        <Image src="/images/news-generic-v2.jpg" alt="" fill className="object-cover" />
+                        <Image src="/images/news-generic-v2.jpg" alt="" fill sizes="96px" className="object-cover" />
                       </span>
                       <div className="min-w-0">
                         <p className="text-lg font-semibold leading-snug text-navy group-hover:underline">
@@ -188,10 +162,10 @@ export default function Home() {
                   {newsItems.map((item) => (
                     <div key={item.slug} className="flex gap-5 py-6">
                       <span className="relative h-24 w-24 shrink-0 overflow-hidden bg-navy/8">
-                        <Image src={item.image} alt="" fill className="object-cover" />
+                        <Image src={item.image} alt="" fill sizes="96px" className="object-cover" />
                       </span>
                       <div className="min-w-0">
-                        <Link href="/news" className="font-heading text-lg font-bold leading-snug text-navy hover:underline">
+                        <Link href={`/news/${item.slug}`} className="font-heading text-lg font-bold leading-snug text-navy hover:underline">
                           {item.title[locale]}
                         </Link>
                         <p className="mt-1.5 text-sm text-muted-foreground">
@@ -199,7 +173,7 @@ export default function Home() {
                         </p>
                         <p className="mt-2.5 text-sm leading-relaxed text-black/65">
                           {item.excerpt[locale]}{" "}
-                          <Link href="/news" className="font-semibold text-red">
+                          <Link href={`/news/${item.slug}`} className="font-semibold text-red">
                             [{t("more")}]
                           </Link>
                         </p>
@@ -213,9 +187,13 @@ export default function Home() {
             {/* Column 2 — live + key events */}
             <Reveal className="lg:col-span-1" delay={100}>
               <div>
-                <h3 className="font-heading text-xl font-extrabold uppercase text-navy">{t("live")}</h3>
-                <div className="mt-5 flex aspect-video items-center justify-center bg-navy-dark">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-red">
+                <div className="relative flex h-64 items-center justify-center overflow-hidden rounded-2xl shadow-[0_8px_24px_rgba(11,37,69,0.12)] ring-1 ring-black/5 p-7">
+                  <Image src="/images/news-workshop.jpg" alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-navy-dark/55" />
+                  <span className="absolute left-7 top-7 rounded-full bg-red px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+                    {t("live")}
+                  </span>
+                  <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-red">
                     <svg className="ml-0.5 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -226,8 +204,8 @@ export default function Home() {
                 <h3 className="font-heading mt-12 text-xl font-extrabold uppercase text-navy">{t("keyEvents")}</h3>
                 <div className="mt-5 space-y-5">
                   {galleryImages.map((img, i) => (
-                    <div key={img.caption[locale]} className="group relative h-56 overflow-hidden">
-                      <Image src={keyEventPhotos[i]} alt="" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <div key={img.caption[locale]} className="group relative h-56 overflow-hidden rounded-2xl shadow-[0_4px_16px_rgba(11,37,69,0.1)] ring-1 ring-black/5">
+                      <Image src={keyEventPhotos[i]} alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-300 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-linear-to-t from-navy-dark/85 via-navy-dark/10 to-transparent" />
                       <p className="absolute bottom-4 left-4 right-4 text-base font-semibold text-white">{img.caption[locale]}</p>
                     </div>
@@ -239,12 +217,16 @@ export default function Home() {
             {/* Column 3 — join the club + partners */}
             <Reveal className="lg:col-span-1" delay={200}>
               <div>
-                <div className="bg-navy p-7">
-                  <h3 className="font-heading text-xl font-extrabold uppercase text-white">{t("joinClub")}</h3>
-                  <p className="mt-3 text-base text-white/70">{t("joinClubBody")}</p>
-                  <Button size="lg" className="mt-6 h-12 bg-red px-6 text-base text-white hover:bg-red/90" render={<Link href="/membership" />}>
-                    {t("joinClubCta")}
-                  </Button>
+                <div className="relative h-64 overflow-hidden p-7">
+                  <Image src="/images/news-members.jpg" alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-navy/90" />
+                  <div className="relative flex h-full flex-col justify-center">
+                    <h3 className="font-heading text-xl font-extrabold uppercase text-white">{t("joinClub")}</h3>
+                    <p className="mt-3 text-base text-white/70">{t("joinClubBody")}</p>
+                    <Button size="lg" className="mt-6 h-12 w-fit bg-red px-6 text-base text-white hover:bg-red/90" render={<Link href="/membership" />}>
+                      {t("joinClubCta")}
+                    </Button>
+                  </div>
                 </div>
 
                 <h3 className="font-heading mt-12 text-xl font-extrabold uppercase text-navy">{tNav("partners")}</h3>
@@ -258,7 +240,7 @@ export default function Home() {
                       >
                         {logo ? (
                           <span className="relative h-10 w-full">
-                            <Image src={logo} alt={p.name} fill className="object-contain" />
+                            <Image src={logo} alt={p.name} fill sizes="80px" className="object-contain" />
                           </span>
                         ) : (
                           <span
@@ -299,14 +281,17 @@ export default function Home() {
                     <Link
                       href="/press"
                       key={p.title[locale]}
-                      className="flex items-center gap-4 py-5 hover:bg-white"
+                      className="group flex items-center gap-4 py-5 hover:bg-white"
                     >
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy">
-                        <MicIcon />
+                      <span className="relative h-24 w-24 shrink-0 overflow-hidden bg-navy/8">
+                        <Image src="/images/press-release.jpg" alt="" fill sizes="96px" className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <span className="absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded-sm bg-red">
+                          <PressReleaseIcon className="h-3 w-3 text-white" />
+                        </span>
                       </span>
                       <div>
-                        <p className="text-base font-semibold leading-snug text-navy">{p.title[locale]}</p>
-                        <p className="text-sm text-muted-foreground">{new Date(p.date).toLocaleDateString(locale)}</p>
+                        <p className="text-lg font-semibold leading-snug text-navy group-hover:underline">{p.title[locale]}</p>
+                        <p className="mt-2 text-sm text-muted-foreground">{new Date(p.date).toLocaleDateString(locale)}</p>
                       </div>
                     </Link>
                   ))}

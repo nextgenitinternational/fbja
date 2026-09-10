@@ -10,6 +10,7 @@
     "search": "Search...",
     "home": "Home",
     "about": "About",
+    "whatWeDo": "What we do",
     "committee": "Executive Committee",
     "members": "Members",
     "news": "News",
@@ -32,6 +33,8 @@
   },
   "home": {
     "heroTitle": "France Bangladesh Journalists Association",
+    "heroLine1": "France Bangladesh",
+    "heroLine2": "Journalists Association",
     "heroSubtitle": "Bringing together French-Bangladeshi journalists around professionalism, training and solidarity.",
     "cta": "Become a member",
     "eyebrow": "France · Bangladesh · Journalism",
@@ -132,7 +135,10 @@
     "valueSolidarityTitle": "Solidarity",
     "valueSolidarityBody": "Supporting fellow journalists, in France and in Bangladesh alike.",
     "valueBridgeTitle": "Cultural bridge",
-    "valueBridgeBody": "Fostering dialogue between the media and publics of both countries."
+    "valueBridgeBody": "Fostering dialogue between the media and publics of both countries.",
+    "whatWeDoP1": "FBJA's aim is to provide a professional and social meeting place for French-Bangladeshi journalists in France. It is a platform for press briefings, public debates, and exchanges with media, associations, and public institutions. Members benefit from mutual aid, mentoring, and a shared network of contacts across the French and Bangladeshi press.",
+    "whatWeDoP2": "FBJA promotes interaction with Bangladeshi and French media, embassies, and cultural institutions. The association organises training workshops, press conferences, and networking events open to professional and freelance journalists alike, as well as students entering the field.",
+    "whatWeDoP3": "Members of FBJA can take part in the association's events — general assemblies, solidarity evenings, training workshops, and networking gatherings. For journalists new to France, FBJA also offers guidance and introductions within the wider French media landscape."
   },
   "press": {
     "intro": "Resources for journalists and media outlets covering FBJA's activities.",
